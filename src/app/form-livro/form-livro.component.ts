@@ -7,7 +7,7 @@ import { Livro } from '../Model/Livro';
   styleUrls: ['./form-livro.component.css'],
 })
 export class FormLivroComponent implements OnInit {
-  @Output() livroCadastrado = new EventEmitter();
+  @Output() livroCadastrado = new EventEmitter<Livro>();
   id: number;
   titulo: string;
   autor: string;
