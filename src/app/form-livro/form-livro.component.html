@@ -1,27 +1,51 @@
 <mat-card>
-  <h2>Cadastrar novo livro</h2>
-  <mat-form-field>
-    <input type="number" placeholder="id" matInput [(ngModel)]="id" />
-  </mat-form-field>
+  <form (submit)="onCadastrarLivro(formLivro)" #formLivro="ngForm">
+    <h2>Cadastrar novo livro</h2>
+    <mat-form-field>
+      <input
+        type="number"
+        required
+        placeholder="id"
+        matInput
+        name="id"
+        [(ngModel)]="id"
+      />
+    </mat-form-field>
 
-  <mat-form-field>
-    <input type="text" placeholder="título" matInput [(ngModel)]="titulo" />
-  </mat-form-field>
+    <mat-form-field>
+      <input
+        type="text"
+        required
+        minlength="4"
+        placeholder="título"
+        matInput
+        name="titulo"
+        [(ngModel)]="titulo"
+      />
+    </mat-form-field>
 
-  <mat-form-field>
-    <input type="text" placeholder="autor" matInput [(ngModel)]="autor" />
-  </mat-form-field>
+    <mat-form-field>
+      <input
+        type="text"
+        required
+        placeholder="autor"
+        matInput
+        name="autor"
+        [(ngModel)]="autor"
+      />
+    </mat-form-field>
 
-  <mat-form-field>
-    <input
-      type="number"
-      placeholder="Nº de páginas"
-      matInput
-      [(ngModel)]="nroPag"
-    />
-  </mat-form-field>
+    <mat-form-field>
+      <input
+        type="number"
+        required
+        placeholder="Nº de páginas"
+        matInput
+        name="nroPag"
+        [(ngModel)]="nroPag"
+      />
+    </mat-form-field>
 
-  <button color="primary" mat-raised-button (click)="onCadastrarLivro()">
-    Cadastrar livro
-  </button>
+    <button color="primary" mat-raised-button>Cadastrar livro</button>
+  </form>
 </mat-card>

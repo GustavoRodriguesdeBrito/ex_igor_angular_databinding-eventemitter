@@ -1,5 +1,6 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { Livro } from '../Model/Livro';
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { LivroService } from '../services/livro.service';
 
 @Component({
   selector: 'app-form-livro',
@@ -7,24 +8,23 @@ import { Livro } from '../Model/Livro';
   styleUrls: ['./form-livro.component.css'],
 })
 export class FormLivroComponent implements OnInit {
-  @Output() livroCadastrado = new EventEmitter<Livro>();
   id: number;
   titulo: string;
   autor: string;
   nroPag: number;
 
-  constructor() {}
+  constructor(public livroSvc: LivroService) {}
 
   ngOnInit(): void {}
 
-  onCadastrarLivro() {
-    console.log('cadastrado');
-    const livro: Livro = {
-      id: this.id,
-      titulo: this.titulo,
-      autor: this.autor,
-      nroPaginas: this.nroPag,
-    };
-    this.livroCadastrado.emit(livro);
+  onCadastrarLivro(formLivro: NgForm) {
+    if (formLivro.invalid) return;
+    this.livroSvc.addLivro(
+      formLivro.value.id,
+      formLivro.value.titulo,
+      formLivro.value.autor,
+      formLivro.value.nroPag
+    );
+    formLivro.resetForm();
   }
 }
