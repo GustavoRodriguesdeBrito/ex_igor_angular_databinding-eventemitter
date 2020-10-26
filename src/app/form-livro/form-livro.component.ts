@@ -8,10 +8,6 @@ import { LivroService } from '../services/livro.service';
   styleUrls: ['./form-livro.component.css'],
 })
 export class FormLivroComponent implements OnInit {
-  id: number;
-  titulo: string;
-  autor: string;
-  nroPag: number;
 
   constructor(public livroSvc: LivroService) {}
 
