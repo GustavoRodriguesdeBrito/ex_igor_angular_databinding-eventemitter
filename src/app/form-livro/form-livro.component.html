@@ -8,8 +8,10 @@
         placeholder="id"
         matInput
         name="id"
-        [(ngModel)]="id"
+        ngModel
+        #id="ngModel"
       />
+      <mat-error *ngIf="id.invalid">Digite um id válido</mat-error>
     </mat-form-field>
 
     <mat-form-field>
@@ -20,8 +22,12 @@
         placeholder="título"
         matInput
         name="titulo"
-        [(ngModel)]="titulo"
+        ngModel
+        #titulo="ngModel"
       />
+      <mat-error *ngIf="titulo.invalid"
+        >Digite um título válido (mínimo de 4 caracteres)</mat-error
+      >
     </mat-form-field>
 
     <mat-form-field>
@@ -31,8 +37,12 @@
         placeholder="autor"
         matInput
         name="autor"
-        [(ngModel)]="autor"
+        ngModel
+        #autor="ngModel"
       />
+      <mat-error *ngIf="autor.invalid"
+        >Digite um nome de autor válido</mat-error
+      >
     </mat-form-field>
 
     <mat-form-field>
@@ -42,8 +52,12 @@
         placeholder="Nº de páginas"
         matInput
         name="nroPag"
-        [(ngModel)]="nroPag"
+        ngModel
+        #nroPag="ngModel"
       />
+      <mat-error *ngIf="nroPag.invalid"
+        >Digite um número de páginas válido</mat-error
+      >
     </mat-form-field>
 
     <button color="primary" mat-raised-button>Cadastrar livro</button>
