@@ -49,11 +49,15 @@ export class LivroService {
       autor,
       nroPag,
     };
+    console.log("addLivro livro value: ", livro);
     this.httpClient
-      .post('http://localhost:3000/api/livros', livro)
+      .post<{_id:String}>('http://localhost:3000/api/livros', livro)
       .subscribe((dados) => {
+        //retornar a id gerada pelo mongodb para o item
+        livro.id = dados._id;
         this.livros.push(livro);
         this.listaAtual.next([...this.livros]);
+        console.log(this.livros);
       });
   }
 

@@ -50,9 +50,10 @@ app.post("/api/livros", (req, res) => {
     autor: req.body.autor,
     nroPag: req.body.nroPag,
   });
-  livro.save();
-
-  res.status(201).json(livro);
+  livro.save().then((livroCadastrado) => {
+    console.log('livro cadastrado: ', livroCadastrado, "\n id do livro: ", livroCadastrado._id);
+    res.status(201).json(livroCadastrado);
+  });
 });
 
 app.put("/api/livros/:id", (req, res) => {
