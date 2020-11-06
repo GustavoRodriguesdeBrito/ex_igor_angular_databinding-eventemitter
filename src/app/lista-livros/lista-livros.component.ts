@@ -14,7 +14,7 @@ export class ListaLivrosComponent implements OnInit, OnDestroy {
   constructor(private livroSvc: LivroService) {}
 
   ngOnInit(): void {
-    this.livros = this.livroSvc.getLivros();
+    this.livroSvc.getLivros();
 
     this.listaSubscription = this.livroSvc
       .getListaAtualObservable()
@@ -22,6 +22,10 @@ export class ListaLivrosComponent implements OnInit, OnDestroy {
         this.livros = livros;
       });
   }
+  onDelete(id:String):void {
+    this.livroSvc.deleteLivro(id);
+  }
+  onEdit(){}
   ngOnDestroy(): void {
     this.listaSubscription.unsubscribe();
   }

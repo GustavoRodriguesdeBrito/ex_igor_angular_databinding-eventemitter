@@ -1,13 +1,13 @@
 export class Livro {
-  id: number;
+  id: String;
   titulo: string;
   autor: string;
-  nroPaginas: number;
+  nroPag: number;
 
-  constructor(id: number, titulo: string, autor: string, nroPaginas: number) {
+  constructor(id: String, titulo: string, autor: string, nroPag: number) {
     this.id = id;
     this.titulo = titulo;
     this.autor = autor;
-    this.nroPaginas = nroPaginas;
+    this.nroPag = nroPag;
   }
 }

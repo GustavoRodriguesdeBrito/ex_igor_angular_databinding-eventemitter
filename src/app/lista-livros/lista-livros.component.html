@@ -5,7 +5,11 @@
     </mat-expansion-panel-header>
     <p>Autor: {{ livro.autor }}</p>
     <hr />
-    <p>Número de páginas: {{ livro.nroPaginas }}</p>
+    <p>Número de páginas: {{ livro.nroPag }}</p>
+    <mat-action-row>
+      <button class="mat-button" color="primary">EDITAR</button>
+      <button (click)="onDelete(livro.id)" class="mat-button" color="warn">REMOVER</button>
+    </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
 

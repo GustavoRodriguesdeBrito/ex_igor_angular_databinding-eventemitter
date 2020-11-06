@@ -46,15 +46,13 @@ app.get("/api/livros/:id", (req, res) => {
 
 app.post("/api/livros", (req, res) => {
   let livro = new Livro({
-    id: req.body.id,
     titulo: req.body.titulo,
     autor: req.body.autor,
     nroPag: req.body.nroPag,
   });
-  console.log(livro);
   livro.save();
 
-  res.sendStatus(201);
+  res.status(201).json(livro);
 });
 
 app.put("/api/livros/:id", (req, res) => {
@@ -62,7 +60,10 @@ app.put("/api/livros/:id", (req, res) => {
 });
 
 app.delete("/api/livros/:id", (req, res) => {
-  res.sendStatus(501);
+  let id = req.params.id;
+  Livro.deleteOne({_id: id}).then((result) => {
+    res.status(200).json({message: `livro ${id} deletado`});
+  });
 });
 
 module.exports = app;

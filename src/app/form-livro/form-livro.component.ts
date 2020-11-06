@@ -16,7 +16,6 @@ export class FormLivroComponent implements OnInit {
   onCadastrarLivro(formLivro: NgForm) {
     if (formLivro.invalid) return;
     this.livroSvc.addLivro(
-      formLivro.value.id,
       formLivro.value.titulo,
       formLivro.value.autor,
       formLivro.value.nroPag
