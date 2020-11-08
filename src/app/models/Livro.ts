@@ -1,10 +1,10 @@
 export class Livro {
   id: String;
-  titulo: string;
-  autor: string;
-  nroPag: number;
+  titulo: String;
+  autor: String;
+  nroPag: Number;
 
-  constructor(id: String, titulo: string, autor: string, nroPag: number) {
+  constructor(id: String, titulo: String, autor: String, nroPag: Number) {
     this.id = id;
     this.titulo = titulo;
     this.autor = autor;

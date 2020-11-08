@@ -13,6 +13,7 @@ import { HeaderComponent } from './header/header.component';
 import { ListaLivrosComponent } from './lista-livros/lista-livros.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from "./app-routing.module";
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatToolbarModule,
     MatExpansionModule,
     HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent],

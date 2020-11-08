@@ -7,8 +7,8 @@
     <hr />
     <p>Número de páginas: {{ livro.nroPag }}</p>
     <mat-action-row>
-      <button class="mat-button" color="primary">EDITAR</button>
-      <button (click)="onDelete(livro.id)" class="mat-button" color="warn">REMOVER</button>
+      <button [routerLink]="['/editar',livro.id]" mat-button color="primary">EDITAR</button>
+      <button (click)="onDelete(livro.id)" mat-button color="warn">REMOVER</button>
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>

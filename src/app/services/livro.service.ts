@@ -42,6 +42,12 @@ export class LivroService {
       });
   }
 
+  getLivro(idLivro: String) {
+    //return {...this.livros.find((livro) => {livro.id === idLivro;})};
+    return this.httpClient.get<{_id:String,titulo:String,autor:String,nroPag:Number}>
+    (`http://localhost:3000/api/livros/${idLivro}`);
+  }
+
   addLivro(titulo: string, autor: string, nroPag: number): void {
     const livro: Livro = {
       id: null,
@@ -49,9 +55,9 @@ export class LivroService {
       autor,
       nroPag,
     };
-    console.log("addLivro livro value: ", livro);
+    console.log('addLivro livro value: ', livro);
     this.httpClient
-      .post<{_id:String}>('http://localhost:3000/api/livros', livro)
+      .post<{ _id: String }>('http://localhost:3000/api/livros', livro)
       .subscribe((dados) => {
         //retornar a id gerada pelo mongodb para o item
         livro.id = dados._id;
@@ -61,8 +67,17 @@ export class LivroService {
       });
   }
 
-  //TODO: Implementar método para deletar e para editar registros
-  editLivro(id: String): void {}
+  editLivro(id: String, titulo: String, autor: String, nroPag: Number): void {
+    const livro = {id, titulo, autor, nroPag};
+    this.httpClient.put(`http://localhost:3000/api/livros/${id}`, livro)
+    .subscribe((res) => {
+      //atualize a lista local
+      let copia = [...this.livros];
+      let indice = copia.findIndex((liv) =>{liv.id === livro.id});
+      copia[indice] = livro;
+      this.listaAtual.next([...copia]);
+    });
+  }
 
   deleteLivro(id: String): void {
     console.log(id);
